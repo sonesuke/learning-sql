@@ -39,3 +39,13 @@ WHERE
       LEVENSHTEIN(a.first_name_a, b.first_name_b) <= 2
   AND LEVENSHTEIN(a.last_name_a, b.last_name_b) <= 2
 ;
+
+CREATE EXTENSION IF NOT EXISTS pg_trgm;
+SELECT
+    *
+FROM
+    A a, B b
+WHERE
+    SIMILARITY(a.first_name_a, b.first_name_b) > 0.4
+    AND SIMILARITY(a.last_name_a, b.last_name_b) > 0.4
+;
