@@ -49,3 +49,11 @@ WHERE
     SIMILARITY(a.first_name_a, b.first_name_b) > 0.4
     AND SIMILARITY(a.last_name_a, b.last_name_b) > 0.4
 ;
+
+SELECT
+    *,
+    SIMILARITY(a.first_name_a || a.last_name_a, b.first_name_b || b.last_name_b)
+FROM
+    A a, B b
+;
+
